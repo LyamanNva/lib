@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang = "en">
+<head>
+    <title>Authors List</title>
+</head>
+<body>
+<h1>Authors List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.surname}"></td>
+        <td>
+            <a th:href="@{/templates/authors/edit/{id}(id=${author.id})}">Edit</a> |
+            <a th:href="@{/templates/authors/delete/{id}(id=${author.id})}" onclick="return confirm('Silmek istediyinizden eminsiniz?');">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/templates/authors/create">Add New Author</a>
+</body>
+</html>
